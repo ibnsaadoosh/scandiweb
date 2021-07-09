@@ -4,7 +4,7 @@
     $type_switcher = $_POST["type-switcher"];
     switch($type_switcher)
     {
-        case "DVD-disc":
+        case "DVD":
             $dvd = new DVD($_POST);
             $dvd->save();
             break;
