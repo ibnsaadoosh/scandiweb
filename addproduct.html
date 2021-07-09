@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+
+    <!-- build:css css/main.css -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- endbuild -->
+    <title>Scandiweb</title>
+    <script type="text/javascript" src="formvalidation.js"></script>
+</head>
+
+<body>
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm-6">
+                    <h1>Product Add</h1>
+                </div>
+                <div class="offset-4 col-12 col-sm-2">
+                    <div class="btn-group">
+                        <button class="btn btn-sm btn-border" type="submit" form="product_form" onclick="validate()" id="add-btn">Save</button>
+                        <a href="index.php" type="button" class="btn btn-sm btn-border" id="add-btn" >Cancel</a>
+                    </div>
+                </div>         
+            </div>
+        </div>
+
+        
+        <div class="container">
+            <form action="addproduct.php" method="post" id="product_form">
+                <div class="form-row">
+                    <div class="form-group col-sm-4">
+                        <label for="sku">SKU</label>
+                        <input type="text" name="sku" oninput="validate()" id="sku" class="form-control form-control-sm mr-1" required>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" oninput="validate()" id="name" class="form-control form-control-sm mr-1" required>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="price">Price ($)</label>
+                        <input type="number" step="any" name="price" oninput="validate()" id="price" class="form-control form-control-sm mr-1" required>
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="productType">Type Switcher</label>
+                        <select name="type-switcher" id="productType" class="form-select" required>
+                            <option value="" selected disabled hidden></option>
+                            <option value="DVD-disc">DVD-disc</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Book">Book</option>
+                        </select>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $('#productType').click(function() {
+                                selection = $(this).val();
+                                switch(selection)
+                                {
+                                    case 'DVD-disc':
+                                        $('#Furniture').attr('hidden', true);
+                                        $('#Book').attr('hidden', true);
+                                        $('#DVD').removeAttr('hidden');
+                                        $('#size').attr('required', true);
+                                        $('#height').attr('required', false);
+                                        $('#width').attr('required', false);
+                                        $('#length').attr('required', false);
+                                        $('#weight').attr('required', false);
+                                        break;
+                                    case 'Furniture':
+                                        $('#DVD').attr('hidden', true);
+                                        $('#Book').attr('hidden', true);
+                                        $('#Furniture').removeAttr('hidden');
+                                        $('#size').attr('required', false);
+                                        $('#height').attr('required', true);
+                                        $('#width').attr('required', true);
+                                        $('#length').attr('required', true);
+                                        $('#weight').attr('required', false);
+                                        break;
+                                    case 'Book':
+                                        $('#DVD').attr('hidden', true);
+                                        $('#Furniture').attr('hidden', true);
+                                        $('#Book').removeAttr('hidden');
+                                        $('#size').attr('required', false);
+                                        $('#height').attr('required', false);
+                                        $('#width').attr('required', false);
+                                        $('#length').attr('required', false);
+                                        $('#weight').attr('required', true);
+                                        break;
+                                }
+                            });
+                        });
+                    </script>
+                    <div id="DVD" class="form-group col-sm-4" hidden>
+                        <label id="type-label" class="sr-only" for="size">Size</label>
+                        <input type="number" step="any" name="size" id="size" class="form-control form-control-sm mr-1">
+                        <p>Please, provide size in MB</p>
+                    </div>
+                    <div id="Furniture" class="form-group col-sm-4" hidden>
+                        <label class="sr-only" for="height">Height (CM)</label>
+                        <input type="number" step="any" name="height" oninput="validate()" id="height" class="form-control form-control-sm mr-1">
+                        <label class="sr-only" for="width">Width (CM)</label>
+                        <input type="number" step="any" name="width" oninput="validate()" id="width" class="form-control form-control-sm mr-1">
+                        <label class="sr-only" for="length">Length (CM)</label>
+                        <input type="number" step="any" name="length" oninput="validate()" id="length" class="form-control form-control-sm mr-1">
+                        <p>Please, provide dimensions in HxWxL</p>
+                    </div>
+                    <div id="Book" class="form-group col-sm-4" hidden>
+                        <label id="type-label" class="sr-only" for="weight">Weight (KG)</label>
+                        <input type="number" step="any" name="weight" oninput="validate()" id="weight" class="form-control form-control-sm mr-1">
+                        <p>Please, provide weight in KG</p>
+                    </div>
+                </div>                
+            </form>
+            
+        </div>
+        
+    </header>
+</body>
