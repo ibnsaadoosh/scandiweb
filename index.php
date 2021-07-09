@@ -22,10 +22,10 @@
                 <div class="col-12 col-sm-6">
                     <h1>Product List</h1>
                 </div>
-                <div class="offset-4 col-12 col-sm-2">
+                <div class="offset-sm-4 col-12 col-sm-2">
                     <div class="btn-group">
-                        <a href="addproduct.html" class="btn btn-sm btn-border" id="add-btn" type="button">Add</a>
-                        <button type="submit" form="delete-product" class="btn btn-sm ml-auto btn-border" id="delete-product-btn">MASS DELETE</button>
+                        <a href="addproduct.html" class="m-2 btn btn-sm btn-border" id="add-btn" type="button">Add</a>
+                        <button type="submit" form="delete-product" class="m-2 btn btn-sm btn-border" id="delete-product-btn">MASS DELETE</button>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                     echo '<div class="row row-content">';
                     for($j = 0 ; $j < 4 && $i<count($dvd_results) ; $j++)
                     {
-                        echo '<div class="product col-3">';
+                        echo '<div class="product m-auto my-4 col-6 col-sm-3 col-md-2">';
                             echo '<input class="delete-checkbox" type="checkbox" name="check[]" value= "' .$dvd_results[$i]["sku"]. '">';
                             echo '<p class="sku">' .$dvd_results[$i]["sku"]. '</p>';
                             echo '<p class="name">' .$dvd_results[$i]["name"]. '</p>';
@@ -82,7 +82,7 @@
                     echo '<div class="row row-content">';
                     for($j = 0 ; $j < 4 && $i<count($book_results) ; $j++)
                     {
-                        echo '<div class="product col-3">';
+                        echo '<div class="product m-auto my-4 col-6 col-sm-3 col-md-2">';
                             echo '<input class="delete-checkbox" type="checkbox" name="check[]" value= "' .$book_results[$i]["sku"]. '">';
                             echo '<p class="sku">' .$book_results[$i]["sku"]. '</p>';
                             echo '<p class="name">' .$book_results[$i]["name"]. '</p>';
@@ -93,13 +93,13 @@
                     }
                     echo '</div>';
                 }
-                
+
                 for ($i = 0 ; $i<count($furniture_results) ; )
                 {
                     echo '<div class="row row-content">';
                     for($j = 0 ; $j < 4 && $i<count($furniture_results) ; $j++)
                     {
-                        echo '<div class="product col-3">';
+                        echo '<div class="product m-auto my-4 col-6 col-sm-3 col-md-2">';
                             echo '<input class="delete-checkbox" type="checkbox" name="check[]" value= "' .$furniture_results[$i]["sku"]. '">';
                             echo '<p class="sku">' .$furniture_results[$i]["sku"]. '</p>';
                             echo '<p class="name">' .$furniture_results[$i]["name"]. '</p>';

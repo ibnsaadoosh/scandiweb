@@ -41,7 +41,6 @@ class DVD extends Product
     {
       $query = "INSERT INTO dvd(sku, name, price, size) 
       values ('$this->sku', '$this->name', '$this->price', '$this->size')";
-      echo $query;
       if($this->conn->query($query))
       {
         echo '<script> window.location="index.php" </script>';
